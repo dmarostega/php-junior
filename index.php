@@ -47,3 +47,18 @@ while($fat >= 1){
 }
 
 writeMessage("Resultado {$res}",'h6');
+
+
+$aux=0;
+$seq=array();
+
+for($i=1; $i<$n; $i++){
+    if($i <= 2){
+        $seq[$i] = $i;
+    }else{
+        $seq[$i] = $seq[$i - 1] + $seq[$i - 2];
+    }    
+}
+
+writeMessage("Fibonacci");
+writeMessage(implode('-',$seq),'');
