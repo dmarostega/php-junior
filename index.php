@@ -62,3 +62,39 @@ for($i=1; $i<$n; $i++){
 
 writeMessage("Fibonacci");
 writeMessage(implode('-',$seq),'');
+
+$saque=80;
+$cedulas=array(10,50);
+rsort($cedulas);
+$contCedulas=array();
+
+foreach($cedulas as $cedula){
+    $contCedulas[$cedula]=0;
+}
+var_dump($cedulas);
+$caixa=900;
+$aux = 0;//$saque;
+$i=0;
+if($saque % 10 != 0){
+     throw new Exception("Error Processing Request", 1);    
+}
+$aux = $saque;
+while($aux > 0){
+        if($cedulas[$i] <= $aux){
+            writeMessage("sacando: ".$cedulas[$i]);
+            $aux -= $cedulas[$i];
+            $contCedulas[$cedulas[$i]]++;
+        }else{
+            $i++;
+        }
+}
+
+writeMessage("Saque realizado");
+writeMessage("Valor: ".$saque);
+
+foreach($contCedulas as $cedula => $q){
+    writeMessage($q.' de '.$cedula);
+}
+
+
+
